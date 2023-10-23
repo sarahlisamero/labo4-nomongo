@@ -22,6 +22,14 @@ app.get('/api/v1/messages', (req, res) => {
     });
 });
 
+app.get('/api/v1/messages/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+    res.json({
+      status: "success",
+      message: `GETTING message with ID ${id}`,
+    });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
