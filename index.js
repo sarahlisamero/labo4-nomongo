@@ -6,6 +6,13 @@ app.use(cors());
 app.use(express.json()); // built-in express.json() middleware to parse JSON data
 
 app.get('/api/v1/messages', (req, res) => {
+  const user = req.query.user;
+  if (user) {
+    res.json({
+      status: "success",
+      message: `GET messages for user ${user}`,
+    });
+  } else {
     res.json({
       status: "success",
       message: "GET messages",
@@ -20,6 +27,7 @@ app.get('/api/v1/messages', (req, res) => {
         },
       ],
     });
+  }
 });
 
 app.get('/api/v1/messages/:id', (req, res) => {
